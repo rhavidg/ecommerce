@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
 import { Container, Wrapper } from './styles';
 import { auth } from '../../firebase-config';
 import { useNavigate, Link } from 'react-router-dom';
 import { Button, OutlinedInput, Typography } from '@mui/material';
 import { UserContext } from '../../context/UserContext';
 
-export function Login() {
+export function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState(null);
@@ -15,9 +18,9 @@ export function Login() {
 
   const navigate = useNavigate();
 
-  const login = async () => {
+  const register = async () => {
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
+      const user = await createUserWithEmailAndPassword(auth, email, password);
       setLoggedUser(user);
       navigate('/produtos');
     } catch (error) {
@@ -37,7 +40,7 @@ export function Login() {
   return (
     <Container>
       <Wrapper>
-        <h1>Login</h1>
+        <h1>Registrar</h1>
         <OutlinedInput
           placeholder="email"
           type="text"
@@ -58,14 +61,12 @@ export function Login() {
             required
           />
         </div>
-        <Button variant="contained" size="large" onClick={login}>
-          <Typography variant="subtitle1">Login</Typography>
+        <Button variant="contained" size="large" onClick={register}>
+          <Typography variant="subtitle1">Registrar</Typography>
         </Button>
 
-        <p>Usuário logado: {user?.email ? user.email : 'Nenhum.'}</p>
         <p>
-          Por favor faça login para acessas as outras páginas. Não tem conta?{' '}
-          <Link to="/registrar">Clique aqui</Link>
+          Já tem conta? <Link to="/">Clique aqui</Link>
         </p>
         {errorMessage != null && <p className="error">Erro: {errorMessage} </p>}
       </Wrapper>
@@ -73,4 +74,4 @@ export function Login() {
   );
 }
 
-export default Login;
+export default Register;

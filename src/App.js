@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Header from './components/Header';
 import { UserStorage } from './context/UserContext';
 import { CartStorage } from './context/CartContext';
+import Register from './pages/Register';
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +34,7 @@ function App() {
                 }
               />
               <Route path="/" element={<Login />} />
+              <Route path="/registrar" element={<Register />} />
             </Routes>
           </div>
         </CartStorage>
