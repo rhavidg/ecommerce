@@ -9,7 +9,7 @@ function PrivateRoute({ children }) {
 
   if (!loggedUser) {
     // not logged in so redirect to login page with the return url
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
   // authorized so return child components

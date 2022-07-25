@@ -19,8 +19,7 @@ export function Login() {
     try {
       const user = await signInWithEmailAndPassword(auth, email, password);
       setLoggedUser(user);
-      console.log(user);
-      navigate('/');
+      navigate('/produtos');
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -64,6 +63,7 @@ export function Login() {
         </Button>
 
         <p>Usuário logado: {user?.email ? user.email : 'Nenhum'}</p>
+        <p>{!user && 'Por favor faça login para acessar as outras páginas.'}</p>
         {errorMessage != null && <p className="error">Erro: {errorMessage} </p>}
       </Wrapper>
     </Container>

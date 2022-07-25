@@ -19,10 +19,10 @@ export function Header() {
   };
   return (
     <Container>
-      <Item onClick={() => navigate('/login')}>
+      <Item onClick={() => navigate('/')}>
         <AiOutlineLogin /> Login
       </Item>
-      <Item onClick={() => navigate('/')}>
+      <Item onClick={() => navigate('/produtos')}>
         <AiOutlineOrderedList /> Produtos
       </Item>
       <Item onClick={() => navigate('/carrinho')}>
@@ -33,7 +33,7 @@ export function Header() {
         onClick={() => {
           logout();
           setLoggedUser({});
-          navigate('/login');
+          navigate('/');
         }}
       >
         <ImExit /> Logout

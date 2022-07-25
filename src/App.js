@@ -17,7 +17,7 @@ function App() {
           <div className="App">
             <Routes>
               <Route
-                path="/"
+                path="/produtos"
                 element={
                   <PrivateRoute>
                     <Products />
@@ -32,7 +32,7 @@ function App() {
                   </PrivateRoute>
                 }
               />
-              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Login />} />
             </Routes>
           </div>
         </CartStorage>
